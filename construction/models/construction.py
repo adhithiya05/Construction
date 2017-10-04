@@ -668,3 +668,8 @@ class IssueTracking(models.Model):
     issue_category = fields.Char("Issue Category", size = 80)
     status = fields.Selection([('P','Pending'),('A','Assigned'),('C','Completed')], string = "Status")
 
+class test(models.Model):
+    name= "example"
+    description = "example"
+
+    name = fields.Char("test")
