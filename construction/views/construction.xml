@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+<!-- Master data -->
+
+      <record id="task_type_tree_view" model="ir.ui.view">
+          <field name="name">task.type.tree.view</field>
+          <field name="model">task.type</field>
+          <field name="arch" type="xml">
+              <tree string="Task Type" editable="bottom">
+                  <field name="name"/>
+                  <field name="code"/> 
+                  <field name="description"/>
+              </tree>
+          </field>
+      </record>
+
+        <record id="action_task_type" model="ir.actions.act_window">
+            <field name="name">Task Type</field>
+            <field name="res_model">task.type</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your task types.
+                </p>
+            </field>
+        </record>
+
+
+
+      <record id="task_category_tree_view" model="ir.ui.view">
+          <field name="name">task.category.tree.view</field>
+          <field name="model">task.category</field>
+          <field name="arch" type="xml">
+              <tree string="Task Category" editable="bottom">
+                  <field name="name"/>
+                  <field name="code"/> 
+                  <field name="description"/>
+              </tree>
+          </field>
+      </record>
+
+        <record id="action_task_category" model="ir.actions.act_window">
+            <field name="name">Task Category</field>
+            <field name="res_model">task.category</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your task categories.
+                </p>
+            </field>
+        </record>
+
+
+        
+      <record id="boq_type_tree_view" model="ir.ui.view">
+          <field name="name">boq.type.tree.view</field>
+          <field name="model">boq.type</field>
+          <field name="arch" type="xml">
+              <tree string="BOQ Type" editable="bottom">
+                  <field name="name"/>
+                  <field name="code"/> 
+                  <field name="description"/>
+              </tree>
+          </field>
+      </record>
+
+
+
+
+        <record id="action_boq_type" model="ir.actions.act_window">
+            <field name="name">BOQ Type</field>
+            <field name="res_model">boq.type</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your BOQ Types.
+                </p>
+            </field>
+        </record>
+
+      
+      <record id="boq_category_tree_view" model="ir.ui.view">
+          <field name="name">boq.category.tree.view</field>
+          <field name="model">boq.category</field>
+          <field name="arch" type="xml">
+              <tree string="BOQ Category" editable="bottom">
+                  <field name="name"/>
+                  <field name="code"/> 
+                  <field name="description"/>
+              </tree>
+          </field>
+      </record>
+
+        <record id="action_boq_category" model="ir.actions.act_window">
+            <field name="name">BOQ Category</field>
+            <field name="res_model">boq.category</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your BOQ categories.
+                </p>
+            </field>
+        </record>
+
+        
+
+      <record id="relation_type_tree_view" model="ir.ui.view">
+          <field name="name">relation.type.tree.view</field>
+          <field name="model">relation.type</field>
+          <field name="arch" type="xml">
+              <tree string="Relation Type" editable="bottom">
+                  <field name="name"/>
+              </tree>
+          </field>
+      </record>
+
+        <record id="action_relation_type" model="ir.actions.act_window">
+            <field name="name">Relation Type</field>
+            <field name="res_model">relation.type</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your Relation Type.
+                </p>
+            </field>
+        </record>
+
+        <!-- WBS -->
+
+        <record id="task_wbs_tree_view" model="ir.ui.view">
+          <field name="name">task.wbs.tree.view</field>
+          <field name="model">task.wbs</field>
+          <field name="arch" type="xml">
+              <tree string="WBS" editable="bottom">
+                 <field name="name"/>
+                  <field name="code"/> 
+                  <field name="description"/>
+              </tree>
+          </field>
+      </record>
+
+        <record id="action_task_wbs" model="ir.actions.act_window">
+            <field name="name">WBS</field>
+            <field name="res_model">task.wbs</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your WBS
+                </p>
+            </field>
+        </record>
+
+        <!-- WBS -->
+
+        <!-- Milestone -->
+
+        <record id="task_milestone_tree_view" model="ir.ui.view">
+          <field name="name">task.milestone.tree.view</field>
+          <field name="model">task.milestone</field>
+          <field name="arch" type="xml">
+              <tree string="Milestone" editable="bottom">
+                 <field name="name"/>
+                  <field name="code"/> 
+                  <field name="description"/>
+              </tree>
+          </field>
+      </record>
+
+        <record id="action_task_milestone" model="ir.actions.act_window">
+            <field name="name">Milestone</field>
+            <field name="res_model">task.milestone</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your Milestone
+                </p>
+            </field>
+        </record>
+
+        <!-- Milestone -->
+
+
+       <!-- Master data -->
+
+
+       <!-- Project Setup -->
+
+
+        <record id="projectsetup_form_view" model="ir.ui.view">
+            <field name="name">projectsetup.form.view</field>
+            <field name="model">project.setup</field>
+            <field name="arch" type="xml">
+              
+                <form string="Manage Project Details" delete="false">
+                    <sheet>
+                      <div class="new" name="button_box">
+                        <button class="oe_stat_button" name="attachment_task_tree_view" type="object" icon="fa-files-o">
+                          <field string="Documents" name="doc_count" widget="statinfo"/>
+                        </button>
+                      </div>
+                        <group>
+                            <group>
+                              <field name="project"/>
+                              <field name="status"/>
+                              <field name="act_start_date"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="act_end_date"/> 
+                            </group>
+                        </group>
+                        <notebook>
+                          <page string="Delivery Unit">
+                            <field name="delivery_unit_ids"/>
+                          </page>
+                          <page string="Project User Mapping">
+                            <field name="user_mapping_ids"/>
+                          </page>
+                           <page string="Associate BOQ">
+                            <field name="boq_mapping_ids"/>
+                          </page>
+                          <page string="Work Scope">
+                            <field name="work_scope_ids"/>
+                          </page>
+                        </notebook>
+                    </sheet>
+                   <!--  <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                  </div> -->
+                </form>
+            </field>
+        </record>
+
+
+        <record id="projectsetup_tree_view" model="ir.ui.view">
+            <field name="name">projectsetup.tree.view</field>
+            <field name="model">project.setup</field>
+            <field name="arch" type="xml">
+                <tree string="Project Setup Detail Tree" delete="false" >
+                    <field name="project"/>
+                    <field name="status" />
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <!-- <field name="delivery_unit" string="D List"/> -->
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="delivery_details_tree" model="ir.ui.view">
+            <field name="name">delivery.details.tree</field>
+            <field name="model">project.deliveryunit</field>
+            <field name="arch" type="xml">
+                <tree string="Delivery Details" editable="bottom">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="specification"/>
+                    <field name="customer"/>
+                    <field name="remarks"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="projectuser_mapping_tree" model="ir.ui.view">
+            <field name="name">projectuser.mapping.tree</field>
+            <field name="model">project.usermapping</field>
+            <field name="arch" type="xml">
+                <tree string="Project User Mapping" editable="bottom">
+                    <field name="name"/>
+                    <field name="emp_code"/>
+                    <field name="user_type"/>
+                    <field name="assigned_from"/>
+                    <field name="assigned_to"/>
+                    <field name="role"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- notebook boq in project setup -->
+
+        <record id="mapboq_details_tree" model="ir.ui.view">
+            <field name="name">project.mapboq.tree</field>
+            <field name="model">project.mapboq</field>
+            <field name="arch" type="xml">
+                <tree string="Project Map BOQ Details" editable="bottom">
+                    <field name="slno"/>
+                    <field name="boq_id"/>
+                    <field name="vendor_id"/>
+                    <field name="vendor_contract"/>
+                    <field name="remarks"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- notebook workscope in project setup -->
+
+         <record id="Project_setup_work_scope_details_form_view" model="ir.ui.view">
+          <field name="name">project.setup.work.scope.details.form.view</field>
+          <field name="model">project.setup.work.scope</field>
+          <field name="arch" type="xml">
+              <form string="Project Setup Work Scope Details">
+                  <sheet>
+                      <group>
+                        <group>
+                        <field name="s_no"/>
+                        <field name="name"/>
+                        <field name="planed_startdate"/>  
+                       <field name="wbs_id"/>
+                       <field name="status"/>
+                       <field name="actual_startdate"/>
+                       <field name="parent_task_id"/> 
+                       </group>
+                        <group>
+                        <field name="task_desc"/>
+                        <field name="planed_enddate"/>
+                        <field name="milestone_id"/>
+                         <field name="effort"/>
+                        <field name="actual_enddate"/>                      
+                        <field name="remarks"/>
+                        </group>
+                      </group>
+                    
+
+                 </sheet>      
+              </form>
+          </field>
+      </record>
+
+     <record id="project_setup_work_scope_tree_view" model="ir.ui.view">
+            <field name="name">project.setup.work.scope.tree.view</field>
+            <field name="model">project.setup.work.scope</field>
+            <field name="arch" type="xml">
+                <tree string="Project Setup Work Scope">
+                    <field name="s_no"/>
+                    <!-- <field name ="task_class"/> -->
+                    <field name="name"/>
+                    <field name="planed_startdate"/>
+                    <field name="planed_enddate"/>
+                    <field name="actual_startdate"/>
+                    <field name="actual_enddate"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="act_window_manage_proect_view" model="ir.actions.act_window">
+            <field name="name">Manage Projects</field>
+            <field name="res_model">project.setup</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage Project Details.
+                </p>
+            </field>
+        </record>
+
+
+         <!-- Task Relationship -->
+      
+       <record id="relationship_tree_view" model="ir.ui.view">
+            <field name="name">task.relationship.tree.view</field>
+            <field name="model">task.relationship</field>
+            <field name="arch" type="xml">
+                <tree string="Task Relationship" editable = "bottom">
+                    <field name="pri_name_id"/>
+                    <field name="related_task_id"/>
+                    <field name="seq_no"/>
+                    <field name="relation_type_id"/>
+                    <field name="schedule_type" />
+                    <field name="lag"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="act_window_relationship_view" model="ir.actions.act_window">
+            <field name="name">Task Relationship</field>
+            <field name="res_model">task.relationship</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create relationship.
+                </p>
+            </field>
+        </record>
+
+        <!-- Task Relationship -->
+
+        <!-- Task  Template-->
+
+       <record id="task_form_view" model="ir.ui.view">
+          <field name="name">task.form.view</field>
+          <field name="model">task</field>
+          <field name="arch" type="xml">
+              <form string="Task">
+                  <sheet>
+                      <group>
+                        <group>
+                        <field name="name"/>
+                        <field name="status"/>
+                        <field name="task_type_id"/>  
+                       <field name="effort_day"/>
+                        </group>
+                        <group>
+                        <field name="task_desc"/>
+                        <field name="wbs_id"/>
+                        <field name="task_category_id"/>
+                        <field name="elapsed_time"/>
+                        <field name="remarks"/>
+                        </group>
+                      </group>
+                    <notebook>
+                      <page string="Check List">
+                        <field name="checklist_ids"/>
+                        <!-- <field name="checklist_id" invisible="1"/> -->
+                        <tree string="Check List" editable="bottom">
+                            <!-- <field name="name"/>
+                            <field name="verification"/>
+                            <field name="remarks"/> -->
+                        </tree>                        
+                   </page>
+                   </notebook>>
+
+                 </sheet>      
+              </form>
+          </field>
+      </record>
+
+     <record id="task__tree_view" model="ir.ui.view">
+          <field name="name">task.tree.view</field>
+          <field name="model">task</field>
+          <field name="arch" type="xml">
+              <tree string="Task">
+                
+                <field name="name"/>
+                <field name="status"/>
+                <field name="task_type_id"/>  
+                <field name="effort_day"/>
+                <field name="task_desc"/>
+                <field name="wbs_id"/>
+                <field name="task_category_id"/>
+                <field name="elapsed_time"/>
+                <field name="remarks"/>
+              
+              </tree>
+          </field>
+      </record>
+
+     <record id="project_task_checklist_tree_view" model="ir.ui.view">
+            <field name="name">project.task.checklist.tree.view</field>
+            <field name="model">project.task.checklist</field>
+            <field name="arch" type="xml">
+                <tree string="Check List" editable="bottom">
+                    <field name="check_list"/>
+                    <field name="name"/>
+                    <field name="verification"/>
+                    <field name="remarks"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="act_window_manage_task_template_view" model="ir.actions.act_window">
+            <field name="name">Task Template</field>
+            <field name="res_model">task</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage Task Template.
+                </p>
+            </field>
+        </record>
+
+      <!-- Task Template -->
+
+        <!-- Project Setup -->
+
+
+       <!-- Project Plan -->
+
+
+       <!--  <record id="act_window_manage_proect_plan_view" model="ir.actions.act_window">
+            <field name="name">Manage Projects Plan</field>
+            <field name="res_model">project.setup</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage Project Plan Details.
+                </p>
+            </field>
+        </record> -->
+
+        <!-- Project Plan -->
+
+        <!-- work order -->
+
+
+       <record id="work_order_details_form_view" model="ir.ui.view">
+          <field name="name">work.order.details.form.view</field>
+          <field name="model">work.order.details</field>
+          <field name="arch" type="xml">
+              <form string="Work Order Details">
+                  <sheet>
+                      <group>
+                        <group>
+                        <field name="name"/>
+                        <field name="workorder_startdate"/>
+                        <field name="status"/>  
+                       <field name="actual_startdate"/>
+                        
+                       </group>
+                        <group>
+                        <field name="project_no"/>
+                        <field name="workorder_enddate"/>
+                        <field name="contractor"/>
+                        <field name="actual_enddate"/>
+                        <field name="wo_task_class"/>                       
+                        </group>
+                      </group>
+                    <notebook>
+                      <page string="WorkScope">
+                        <field name="work_scope_ids"/>
+                        <!-- <field name="checklist_id" invisible="1"/> -->
+                        <tree string="WorkScope" editable="bottom">
+                            <!-- <field name="name"/>
+                            <field name="verification"/>
+                            <field name="remarks"/> -->
+                        </tree>
+                        
+                   </page>
+                   </notebook>
+
+                 </sheet>      
+              </form>
+          </field>
+      </record>
+
+      <record id="work_order_details__tree_view" model="ir.ui.view">
+          <field name="name">work.order.details.tree.view</field>
+          <field name="model">work.order.details</field>
+          <field name="arch" type="xml">
+              <tree string="Work Order Details">
+                
+                  <field name="name"/>
+                  <field name="project_no"/>
+                  <field name="workorder_startdate"/>
+                  <field name="workorder_enddate"/>
+                  <field name="status"/>
+                  <field name="contractor"/>  
+                  <field name="actual_startdate"/>
+                  <field name="actual_enddate"/>
+              
+              </tree>
+          </field>
+      </record>
+
+       <!-- workscope -->
+
+       <record id="work_scope_details_form_view" model="ir.ui.view">
+          <field name="name">work.scope.details.form.view</field>
+          <field name="model">work.scope</field>
+          <field name="arch" type="xml">
+              <form string="Work Scope Details">
+                  <sheet>
+                      <group>
+                        <group>
+                        <field name="s_no"/>
+                        <field name="task_id"/>
+                        <field name="planed_startdate"/>  
+                       <field name="wbs_id"/>
+                       <field name="status"/>
+                       <field name="actual_startdate"/>
+                       <field name="task_class"/>
+                      <field name="parent_map_task_id"/> 
+                       </group>
+                        <group>
+                        <field name="wo_task_type"/>
+                        <field name="task_desc"/>
+                        <field name="planed_enddate"/>
+                        <field name="milestone_id"/>
+                         <field name="effort"/>
+                        <field name="actual_enddate"/>                      
+                        <field name="remarks"/>
+                        </group>
+                      </group>
+                    
+
+                 </sheet>      
+              </form>
+          </field>
+      </record>
+
+     <record id="work_scope_tree_view" model="ir.ui.view">
+            <field name="name">work.scope.tree.view</field>
+            <field name="model">work.scope</field>
+            <field name="arch" type="xml">
+                <tree string="Work Scope">
+                    <field name="s_no"/>
+                    <field name ="wo_task_type"/>
+                    <field name="task_id"/>
+                    <field name="planed_startdate"/>
+                    <field name="planed_enddate"/>
+                    <field name="actual_startdate"/>
+                    <field name="actual_enddate"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="action_work_order_type" model="ir.actions.act_window">
+            <field name="name">Work Order Details</field>
+            <field name="res_model">work.order.details</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your Work Order Details.
+                </p>
+            </field>
+        </record>
+
+        <!-- work order -->
+
+
+        <!-- BOQ -->
+
+        <record id="boq_form_view" model="ir.ui.view">
+            <field name="name">boq.form.view</field>
+            <field name="model">bill.of.quantity</field>
+            <field name="arch" type="xml">
+                <!-- <div class="oe_button_box" name="button_box"> -->
+                <!-- <button class="oe_stat_button" name="attachment_task_tree_view" type="object" icon="fa-files-o">
+                    <field string="Documents" name="doc_count" widget="statinfo"/>
+                </button> -->
+                <!-- </div> -->
+                <form string="Manage BOQ" delete="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="boq_id"/>
+                                <field name="boq_type_id" options="{'no_create': True}"/>
+                                <field name="job_id"/>
+                                <field name="notes"/>
+                                <field name="remarks"/>
+                            </group>
+                            <group>
+                                <field name="boq_shr_description" />
+                                <field name="boq_category_id" options="{'no_create': True}"/>
+                                <field name="status"/>
+                                <field name="boq_parent"/>
+                                <field name="parent_boq"/>
+                                <field name="boq_class"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="BOQ Items">
+                                <field name="item_ids"/>
+                            </page>
+                            <page string="BOQ Details">
+                                <field name="material_ids"/>
+                            </page>
+                            <page string="BOQ Description">
+                                <field name="boq_lng_description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <!-- <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                  </div> -->
+                </form>
+            </field>
+        </record>
+        <record id="boq_tree_view" model="ir.ui.view">
+            <field name="name">boq.tree.view</field>
+            <field name="model">bill.of.quantity</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Detail Tree" delete="false" >
+                    <field name="boq_id"/>
+                    <field name="boq_shr_description" />
+                    <field name="boq_type_id" widget="selection"/>
+                    <field name="boq_category_id"/>
+                    <field name="job_id"/>
+                    <field name="boq_parent"/>
+                    <field name="parent_boq"/>
+                    <field name="status"/>
+                   <!--  <field name="remarks"/> -->
+                    <field name="item_ids" string="Items List"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="boq_details_tree" model="ir.ui.view">
+            <field name="name">boq.details.tree</field>
+            <field name="model">boq.details</field>
+            <field name="arch" type="xml">
+                <tree string="BOQ Details" editable="bottom">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="uom_id"/>
+                    <field name="quantity"/>
+                    <field name="cost_per_unit"/>
+                    <field name="total_cost" sum="Total Cost"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="boq_items_form_view" model="ir.ui.view">
+            <field name="name">boq.items.form.view</field>
+            <field name="model">boq.items</field>
+            <field name="arch" type="xml">
+              
+                <form string="BOQ Items" delete="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="seq_no"/>
+                                <field name="unit_id"/>
+                                <field name="description"/>
+                                <field name="rate"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="quantity"/>
+                                <field name="amount" sum="Total Cost"/>
+
+                                
+                            </group>
+                        </group>
+
+                       
+                    </sheet>
+                  
+                </form>
+            </field>
+        </record>
+        <record id="boq_items_tree" model="ir.ui.view">
+            <field name="name">boq.items.tree</field>
+            <field name="model">boq.items</field>
+            <field name="arch" type="xml">
+                <tree string="BOQ Items">
+                    <field name="seq_no"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                    <field name="unit_id"/>
+                    <field name="quantity"/>
+                    <field name="rate"/>
+                    <field name="amount" sum="Total Cost"/>
+                </tree>
+            </field>
+        </record>
+        <record id="act_window_manage_boq_view" model="ir.actions.act_window">
+            <field name="name">Manage BOQ</field>
+            <field name="res_model">bill.of.quantity</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage BOQ.
+                </p>
+            </field>
+        </record>
+
+
+
+
+        <!-- BOQ -->
+
+
+         <!-- Project BOQ -->
+
+        <record id="project_boq_form_view" model="ir.ui.view">
+            <field name="name">project.boq.form.view</field>
+            <field name="model">project.bill.of.quantity</field>
+            <field name="arch" type="xml">
+                <!-- <div class="oe_button_box" name="button_box"> -->
+                <!-- <button class="oe_stat_button" name="attachment_task_tree_view" type="object" icon="fa-files-o">
+                    <field string="Documents" name="doc_count" widget="statinfo"/>
+                </button> -->
+                <!-- </div> -->
+                <form string="Manage BOQ" delete="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="boq_id"/>
+                                <field name="boq_type_id" options="{'no_create': True}"/>
+                                <field name="job_id"/>
+                                <field name="notes"/>
+                                <field name="remarks"/>
+                            </group>
+                            <group>
+                                <field name="revision"/>
+                                <field name="boq_shr_description" />
+                                <field name="boq_category_id" options="{'no_create': True}"/>
+                                <field name="status"/>
+                                <field name="boq_parent"/>
+                                <field name="parent_boq"/>
+                                <field name="boq_class"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="BOQ Items">
+                                <field name="item_ids"/>
+                            </page>
+                            <page string="BOQ Details">
+                                <field name="material_ids"/>
+                            </page>
+                            <page string="BOQ Description">
+                                <field name="boq_lng_description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <!-- <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                  </div> -->
+                </form>
+            </field>
+        </record>
+        <record id="project_boq_tree_view" model="ir.ui.view">
+            <field name="name">project.boq.tree.view</field>
+            <field name="model">project.bill.of.quantity</field>
+            <field name="arch" type="xml">
+                <tree string="Manage BOQ Tree" delete="false" >
+                    <field name="name"/>
+                    <field name="revision"/>
+                    <field name="boq_id"/>
+                    <field name="boq_shr_description" />
+                    <field name="boq_type_id" widget="selection"/>
+                    <field name="boq_category_id"/>
+                    <field name="job_id"/>
+                    <field name="boq_parent"/>
+                    <field name="status"/>
+                    <field name="remarks"/>
+                    <field name="material_ids" string="Material List"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="boq_details_tree" model="ir.ui.view">
+            <field name="name">boq.details.tree</field>
+            <field name="model">boq.details</field>
+            <field name="arch" type="xml">
+                <tree string="BOQ Details" editable="bottom">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="uom_id"/>
+                    <field name="quantity"/>
+                    <field name="cost_per_unit"/>
+                    <field name="total_cost" sum="Total Cost"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="boq_items_form_view" model="ir.ui.view">
+            <field name="name">boq.items.form.view</field>
+            <field name="model">boq.items</field>
+            <field name="arch" type="xml">
+              
+                <form string="BOQ Items" delete="false">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="seq_no"/>
+                                <field name="unit_id"/>
+                                <field name="description"/>
+                                <field name="rate"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="quantity"/>
+                                <field name="amount" sum="Total Cost"/>
+
+                                
+                            </group>
+                        </group>
+
+                       
+                    </sheet>
+                  
+                </form>
+            </field>
+        </record>
+        <record id="boq_items_tree" model="ir.ui.view">
+            <field name="name">boq.items.tree</field>
+            <field name="model">boq.items</field>
+            <field name="arch" type="xml">
+                <tree string="BOQ Items">
+                    <field name="seq_no"/>
+                    <field name="code"/>
+                    <field name="description"/>
+                    <field name="unit_id"/>
+                    <field name="quantity"/>
+                    <field name="rate"/>
+                    <field name="amount" sum="Total Cost"/>
+                </tree>
+            </field>
+        </record>
+        <record id="act_window_project_manage_boq_view" model="ir.actions.act_window">
+            <field name="name">Manage BOQ</field>
+            <field name="res_model">project.bill.of.quantity</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage BOQ.
+                </p>
+            </field>
+        </record>
+
+
+
+
+        <!-- Project BOQ -->
+
+
+        <!-- Time sheet -->
+
+
+        <record id="work_order_timesheet_tree_view" model="ir.ui.view">
+            <field name="name">work.order.timesheet.tree.view</field>
+            <field name="model">work.order.timesheet</field>
+            <field name="arch" type="xml">
+                <tree string="Work Order Timesheet" editable="bottom">
+                   <field name="recording_date"  options="{'no_create' : True}"/>
+                    <field name="work_order_id"  options="{'no_create' : True}"/>
+                    <field name="task_id"  options="{'no_create' : True}"/>
+                     <field name="emp_code_id"  options="{'no_create' : True}"/>
+                    <field name="startdate"/>
+                    <field name="enddate"/>
+                    <field name="effort"/>
+                    <field name="complete"/>
+                    <field name="remarks"/>                   
+               </tree>
+            </field>
+        </record>
+
+       <record id="action_work_order_timesheet" model="ir.actions.act_window">
+            <field name="name">Work Order Timesheet</field>
+            <field name="res_model">work.order.timesheet</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your Work Order Timesheet.
+                </p>
+            </field>
+        </record>
+
+      <!-- timesheet -->
+
+      <!-- CRM Change order -->
+
+
+       <record id="crm_change_order_form_view" model="ir.ui.view">
+          <field name="name">crm.change.order.form.view</field>
+          <field name="model">crm.change.order</field>
+          <field name="arch" type="xml">
+              <form string="Change Order">
+                  <sheet>
+                      <group>
+                        <group>
+                        <field name="name"/>
+                        <field name="customer"/>
+                        <field name="date"/>  
+                       <field name="status"/>
+                       <field name="change_order_type"/>
+                       <field name="change_order_category"/>
+                       </group>
+                        <group>
+                        <field name="raised_by"/>
+                        <field name="cost_paid_by"/>
+                         <field name="change_order_details"/>
+                        <field name="change_order_boq"/>
+                        <field name="boq_impact_details"/>  
+                        <field name="cost"/>                        
+                        <field name="remarks"/>
+                        </group>
+                      </group>
+                 </sheet>      
+              </form>
+          </field>
+      </record>
+
+     <record id="crm_change_order_tree_view" model="ir.ui.view">
+            <field name="name">crm.change.order.tree.view</field>
+            <field name="model">crm.change.order</field>
+            <field name="arch" type="xml">
+                <tree string="Change Order">
+                <field name="name"/>
+                <field name="customer"/>
+                <field name="date"/>  
+                <field name="status"/>
+                <field name="change_order_type"/>
+                <field name="change_order_category"/>
+                <field name="raised_by"/>
+                <field name="cost_paid_by"/>
+                <field name="change_order_details"/>
+                <field name="change_order_boq"/>
+                <field name="boq_impact_details"/>  
+                <field name="cost"/>                        
+                <field name="remarks"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="action_crm_change_order" model="ir.actions.act_window">
+            <field name="name">Change order</field>
+            <field name="res_model">crm.change.order</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your CRM Change order
+                </p>
+            </field>
+        </record>
+
+      <!-- CRM Change order -->
+
+
+      <!-- CRM Manage Leads -->
+
+      <record id="manage_leads_view" model="ir.ui.view">
+            <field name="name">manage.leads.view</field>
+            <field name="model">crm.process.lead</field>
+            <field name="arch" type="xml">
+                <form string="Manage Leads" delete="false">
+                     <sheet>
+                        <group>
+                            <group>
+                                <field name="lead_ref_id"/>
+                                <field name="lead_details"/>
+                                <field name="responsibility"/>
+                                <field name="contact_interest"/>
+                                <field name="property_interested"/>
+                                <field name="budget"/>
+                                <field name="floor"/>
+                            </group>
+                            <group>
+                                <field name="date" />
+                                <field name="lead_source"/>
+                                <field name="lead_status"/>
+                                <field name="other_comments"/>
+                                <field name="house_preference"/>
+                                <field name="facing"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Contact Details">
+                            <group>
+                                <group>
+                                <field name="customer_id_ref"/>
+                                <field name="first_name"/>
+                                <field name="last_name"/>
+                                <field name="address_1"/>
+                                <field name="address_2"/>
+                                <field name="company_name"/>
+                            </group>
+                            <group>
+                                <field name="mobile_no_1"/>
+                                <field name="mobile_no_2"/>
+                                <field name="landline_no"/>
+                                <field name="email_id_1"/>
+                                <field name="email_id_2"/>
+                                <field name="skype_id"/>
+                                <field name="twitter"/>
+                                <field name="facebook"/>
+                                <field name="other_social_media"/>
+                                <field name="company_URL"/>
+                            </group>
+                        </group>
+                            </page>
+                            <page string="Team">
+                                <field name="team_ids"/>
+                            </page>
+                            <page string="Activity">
+                                <field name="activity_ids"/>
+                            </page>
+                            <page string="Payment Preference">
+                                <group>
+                                <field name="payment_type"/>
+                                <field name="loan_amount"/>
+                                <field name="remarks"/>
+                                <field name="preferred_bank"/>
+                                <field name="other_prefer"/>
+                            </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <!-- <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                  </div> -->
+                </form>
+            </field>
+        </record>
+
+
+        <record id="crm_lead_tree_view" model="ir.ui.view">
+            <field name="name">crmlead.tree.view</field>
+            <field name="model">crm.process.lead</field>
+            <field name="arch" type="xml">
+                <tree string="Leads Tree" >
+                    <field name="lead_ref_id"/>
+                    <field name="lead_status"/>
+                    <field name="date"/>
+                    <field name="responsibility"/>
+                </tree>
+            </field>
+        </record>
+        <record id="lead_team_tree" model="ir.ui.view">
+            <field name="name">lead.team.tree</field>
+            <field name="model">crm.lead.team</field>
+            <field name="arch" type="xml">
+                <tree string="Team" editable="bottom">
+                    <field name="user"/>
+                    <field name="employee_code"/>
+                    <field name="employee_name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+      <record id="lead_activity_tree" model="ir.ui.view">
+            <field name="name">lead.activity.tree</field>
+            <field name="model">crm.lead.activity</field>
+            <field name="arch" type="xml">
+                <tree string="Activity" editable="bottom">
+                    <field name="task"/>
+                    <field name="target_date"/>
+                    <field name="priority"/>
+                    <field name="status"/>
+                    <field name="assigned_to_id"/>
+                    <field name="remarks"/>
+                </tree>
+            </field>
+        </record>
+      <record id="act_window_manage_leads_view" model="ir.actions.act_window">
+            <field name="name">Manage Leads</field>
+            <field name="res_model">crm.process.lead</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage crm leads.
+                </p>
+            </field>
+        </record>
+
+      <!-- CRM Manage Leads -->
+
+
+      <!-- CRM Sales Order -->
+
+      <record id="sale_order_view" model="ir.ui.view">
+            <field name="name">sale.order.view</field>
+            <field name="model">crm.process.saleorder</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sale_order_date"/>
+                                <field name="customer"/>
+                                <field name="pay_term"/>
+                                <field name="responsibility"/>
+                            </group>
+                            <group>
+                                <field name="status" />
+                                <field name="details"/>
+                                <field name="contract"/>
+                                <field name="customization_req"/>
+                                <field name="customization_boq"/>
+                                <field name="lead_ref_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Project Details">
+                                <field name="project_details_ids"/>
+                            </page>
+                            <page string="Payment Schedule">
+                                <field name="payment_schedule_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <!-- <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                  </div> -->
+                </form>
+            </field>
+        </record>
+      <record id="saleorder_tree_view" model="ir.ui.view">
+            <field name="name">saleorder.tree.view</field>
+            <field name="model">crm.process.saleorder</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Order Tree" >
+                    <field name="name"/>
+                    <field name="status"/>
+                    <field name="sale_order_date"/>
+                    <field name="customer"/>
+                    <field name="responsibility"/>
+                </tree>
+            </field>
+        </record>
+
+      <record id="sale_project_tree" model="ir.ui.view">
+            <field name="name">sale.project.tree</field>
+            <field name="model">crm.sale.project</field>
+            <field name="arch" type="xml">
+                <tree string="Project Details" editable="bottom">
+                    <field name="name"/>
+                    <field name="project_unit"/>
+                    <field name="floor"/>
+                    <field name="spec"/>
+                     <field name="uds"/>
+                     <field name="carpet_area"/>
+                     <field name="buildup_area"/>
+                   <!--  <field name="parking"/>
+                    <field name="park_spec"/> -->
+                    <field name="comments"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="sale_payment_tree" model="ir.ui.view">
+            <field name="name">sale.payment.tree</field>
+            <field name="model">crm.sale.payment</field>
+            <field name="arch" type="xml">
+                <tree string="Payment Schedule" editable="bottom">
+                    <field name="name"/>
+                    <field name="pay_element"/>
+                    <field name="schedule_date"/>
+                    <field name="amount"/>
+                    <field name="pay_mode"/>
+                    <field name="billed_amount"/>
+                    <field name="paid_amount"/>
+                    <field name="bank_details"/>
+                    <field name="remarks"/>
+                </tree>
+            </field>
+        </record>
+      <record id="act_window_process_saleorder_view" model="ir.actions.act_window">
+            <field name="name">Sale Order</field>
+            <field name="res_model">crm.process.saleorder</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage crm saleorder.
+                </p>
+            </field>
+        </record>
+
+    <!-- CRM Sales order -->
+
+    <!-- CRM Issue Tracking -->
+
+      <record id="issue_tracking_view" model="ir.ui.view">
+            <field name="name">issue.tracking.view</field>
+            <field name="model">crm.issue.tracking</field>
+            <field name="arch" type="xml">
+                <form string="Issue Tracking">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="issue_no"/>
+                                <field name="date"/>
+                                <field name="issue_type"/>
+                                <field name="description"/>
+                                <field name="priority"/>
+                                <field name="other_info"/>
+                            </group>
+                            <group>
+                                <field name="customer" />
+                                <field name="issue_category"/>
+                                <field name="status"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    <record id="issue_tracking_tree" model="ir.ui.view">
+            <field name="name">issue.tracking.tree</field>
+            <field name="model">crm.issue.tracking</field>
+            <field name="arch" type="xml">
+                <tree string="Issue Tracking" >
+                    <field name="issue_no"/>
+                    <field name="date"/>
+                    <field name="issue_type"/>
+                    <field name="priority"/>
+                    <field name="customer"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+    <record id="act_window_process_issuetracking_view" model="ir.actions.act_window">
+            <field name="name">Issue Tracking</field>
+            <field name="res_model">crm.issue.tracking</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can manage Issue Tracking.
+                </p>
+            </field>
+        </record>
+
+
+    <!-- CRM Issue Tracking -->
+
+
+       <!--Master Data -->
+
+        <menuitem name="Construction"
+          id="menu_construction_root"
+          sequence="7"/>
+
+        <menuitem id="menu_master_data" name="Master Data"
+          parent="menu_construction_root" sequence="1"/>
+
+        <menuitem id="menu_Project_setup" name="Project Setup"
+          parent="menu_construction_root" sequence="9"/>
+<!-- 
+        <menuitem id="menu_Project_Plan" name="Project Plan"
+          parent="menu_construction_root" sequence="14"/> -->
+
+        <menuitem id="menu_work_order" name="Execution"
+          parent="menu_construction_root" sequence="16"/>
+
+        <menuitem id="menu_crm" name="CRM"
+          parent="menu_construction_root" sequence="19"/>
+
+        <menuitem id="menu_task_type" name="Task Type"
+          parent="menu_master_data" sequence="2" action="action_task_type"/>
+
+
+        <menuitem id="menu_task_category" name="Task Category"
+          parent="menu_master_data" sequence="3" action="action_task_category"/>
+
+
+        <menuitem id="menu_boq_type" name="BOQ Type"
+          parent="menu_master_data" sequence="4" action="action_boq_type"/>
+
+        <menuitem id="menu_boq_category" name="BOQ Category"
+          parent="menu_master_data" sequence="5" action="action_boq_category"/>
+
+        <menuitem id="menu_relation_type" name="Relation Type"
+          parent="menu_master_data" sequence="6" action="action_relation_type"/> 
+
+        <menuitem id="menu_milestone" name="Milestone"
+          parent="menu_master_data" sequence="7" action="action_task_milestone"/>
+
+        <menuitem id="menu_wbs" name="WBS"
+          parent="menu_master_data" sequence="8" action="action_task_wbs"/>
+
+        
+
+      <!--Master Data -->
+
+      <!-- Project Setup -->
+
+        <menuitem id="menu_manage_project_setup" name="Project Setup"
+        parent="menu_Project_setup" sequence="10" action="act_window_manage_proect_view"/>
+
+        <menuitem id="menu_manage_task_realationship" name="Task Relationship"
+        parent="menu_Project_setup" sequence="11" action="act_window_relationship_view"/>
+
+         <menuitem id="menu_manage_task_template" name="Task Template"
+        parent="menu_Project_setup" sequence="12" action="act_window_manage_task_template_view"/>
+
+        <menuitem id="menu_manage_boq_template" name="BOQ Template"
+        parent="menu_Project_setup" sequence="13" action="act_window_manage_boq_view"/>
+
+        <menuitem id="menu_project_boq_template" name="Project Level BOQ"
+        parent="menu_Project_setup" sequence="14" action="act_window_project_manage_boq_view"/>
+
+        
+      <!-- Project Setup -->
+
+
+       <!-- Project Plan -->
+
+
+      <!-- <menuitem id="menu_manage_project_plan" name="Project Plan"
+        parent="menu_Project_Plan" sequence="15" action="act_window_manage_proect_plan_view"/> -->
+
+      <!--Project Plan -->
+
+      <!-- Work order -->
+
+
+      <menuitem id="menu_manage_work_order" name="Work Order"
+        parent="menu_work_order" sequence="17" action="action_work_order_type"/>
+
+         <menuitem id="menu_manage_time_sheet" name="Time Sheet"
+        parent="menu_work_order" sequence="18" action="action_work_order_timesheet"/>
+
+      <!--Work  order -->
+
+      <!-- CRM -->
+
+      <menuitem id="menu_manage_leads" name="Manage Leads"
+        parent="menu_crm" sequence="20" action="act_window_manage_leads_view"/>
+
+      <menuitem id="menu_manage_sales_order" name="Sales Order"
+        parent="menu_crm" sequence="21" action="act_window_process_saleorder_view"/>
+      
+      <menuitem id="menu_manage_issue_tracking" name="Issue Tracking"
+        parent="menu_crm" sequence="22" action="act_window_process_issuetracking_view"/>
+
+
+      <menuitem id="menu_manage_change_order" name="Change Order"
+        parent="menu_crm" sequence="23" action="action_crm_change_order"/>
+      
+      
+    </data>
+</odoo>
