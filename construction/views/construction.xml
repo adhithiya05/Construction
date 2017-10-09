@@ -195,11 +195,6 @@
               
                 <form string="Manage Project Details" delete="false">
                     <sheet>
-                      <div class="new" name="button_box">
-                        <button class="oe_stat_button" name="attachment_task_tree_view" type="object" icon="fa-files-o">
-                          <field string="Documents" name="doc_count" widget="statinfo"/>
-                        </button>
-                      </div>
                         <group>
                             <group>
                               <field name="project"/>
@@ -368,7 +363,7 @@
             <field name="model">task.relationship</field>
             <field name="arch" type="xml">
                 <tree string="Task Relationship" editable = "bottom">
-                    <field name="pri_name_id"/>
+                    <field name="primary_task_id"/>
                     <field name="related_task_id"/>
                     <field name="seq_no"/>
                     <field name="relation_type_id"/>
@@ -576,7 +571,7 @@
                        <field name="status"/>
                        <field name="actual_startdate"/>
                        <field name="task_class"/>
-                      <field name="parent_map_task_id"/> 
+                      <field name="parent_task_id"/> 
                        </group>
                         <group>
                         <field name="wo_task_type"/>
@@ -632,11 +627,6 @@
             <field name="name">boq.form.view</field>
             <field name="model">bill.of.quantity</field>
             <field name="arch" type="xml">
-                <!-- <div class="oe_button_box" name="button_box"> -->
-                <!-- <button class="oe_stat_button" name="attachment_task_tree_view" type="object" icon="fa-files-o">
-                    <field string="Documents" name="doc_count" widget="statinfo"/>
-                </button> -->
-                <!-- </div> -->
                 <form string="Manage BOQ" delete="false">
                     <sheet>
                         <group>
@@ -712,8 +702,7 @@
         <record id="boq_items_form_view" model="ir.ui.view">
             <field name="name">boq.items.form.view</field>
             <field name="model">boq.items</field>
-            <field name="arch" type="xml">
-              
+            <field name="arch" type="xml">          
                 <form string="BOQ Items" delete="false">
                     <sheet>
                         <group>
@@ -727,8 +716,6 @@
                                 <field name="code"/>
                                 <field name="quantity"/>
                                 <field name="amount" sum="Total Cost"/>
-
-                                
                             </group>
                         </group>
 
@@ -776,11 +763,6 @@
             <field name="name">project.boq.form.view</field>
             <field name="model">project.bill.of.quantity</field>
             <field name="arch" type="xml">
-                <!-- <div class="oe_button_box" name="button_box"> -->
-                <!-- <button class="oe_stat_button" name="attachment_task_tree_view" type="object" icon="fa-files-o">
-                    <field string="Documents" name="doc_count" widget="statinfo"/>
-                </button> -->
-                <!-- </div> -->
                 <form string="Manage BOQ" delete="false">
                     <sheet>
                         <group>
@@ -1313,24 +1295,24 @@
 
        <!--Master Data -->
 
-        <menuitem name="Construction"
-          id="menu_construction_root"
+        <menuitem name="Project"
+          id="menu_project_root"
           sequence="7"/>
 
         <menuitem id="menu_master_data" name="Master Data"
-          parent="menu_construction_root" sequence="1"/>
+          parent="menu_project_root" sequence="1"/>
 
         <menuitem id="menu_Project_setup" name="Project Setup"
-          parent="menu_construction_root" sequence="9"/>
+          parent="menu_project_root" sequence="9"/>
 <!-- 
         <menuitem id="menu_Project_Plan" name="Project Plan"
-          parent="menu_construction_root" sequence="14"/> -->
+          parent="menu_project_root" sequence="14"/> -->
 
         <menuitem id="menu_work_order" name="Execution"
-          parent="menu_construction_root" sequence="16"/>
+          parent="menu_project_root" sequence="16"/>
 
         <menuitem id="menu_crm" name="CRM"
-          parent="menu_construction_root" sequence="19"/>
+          parent="menu_project_root" sequence="19"/>
 
         <menuitem id="menu_task_type" name="Task Type"
           parent="menu_master_data" sequence="2" action="action_task_type"/>
