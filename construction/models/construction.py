@@ -81,47 +81,6 @@ class ProjectSetup(models.Model):
     work_scope_ids = fields.One2many('project.setup.work.scope', 'project_setup_work_scope')
     boq_mapping_ids = fields.One2many('project.mapboq', 'project_mapboq') 
 
-    def _compute_attached_docs_count(self):
-        Attachment = self.env['ir.attachment']
-        for project in self:
-            project.doc_count = Attachment.search_count([
-                '|',
-                '&',
-                ('res_model', '=', 'project.project'), ('res_id', '=', project.id),
-                '&',
-                ('res_model', '=', 'project.task'), ('res_id', 'in', project.task_ids.ids)
-            ])
-
-
-    @api.multi
-    def attachment_task_tree_view(self):
-        self.ensure_one()
-        domain = [
-            '|',
-            '&', ('res_model', '=', 'project.project'), ('res_id', 'in', self.ids),
-            '&', ('res_model', '=', 'project.task'), ('res_id', 'in', self.task_ids.ids)]
-        return {
-            'name': _('Attachments'),
-            'domain': domain,
-            'res_model': 'ir.attachment',
-            'type': 'ir.actions.act_window',
-            'view_id': False,
-            'view_mode': 'kanban,tree,form',
-            'view_type': 'form',
-            'help': _('''<p class="oe_view_nocontent_create">
-                        Documents are attached to the tasks and issues of your project.</p><p>
-                        Send messages or log internal notes with attachments to link
-                        documents to your project.
-                    </p>'''),
-            'limit': 80,
-            'context': "{'default_res_model': '%s','default_res_id': %d}" % (self._name, self.id)
-        }
-
-   
-    doc_count = fields.Integer(compute='_compute_attached_docs_count', string="Number of documents attached")
-    task_ids = fields.One2many('project.task', 'project_id', string='Tasks',
-                               domain=['|', ('stage_id.fold', '=', False), ('stage_id', '=', False)])
-    
 
 
 
@@ -155,11 +114,11 @@ class projectusermapping(models.Model):
 class Relationship(models.Model):
     _name = "task.relationship"
     _description = "Task Relationship"
-    _rec_name = 'pri_name_id'
+    _rec_name = 'primary_task_id'
 
 
     # name = fields.Char('Primary Task', size = 150, required = "1")
-    pri_name_id = fields.Many2one('task', string = "Primary Task", required = 1)
+    primary_task_id = fields.Many2one('task', string = "Primary Task", required = 1)
     related_task_id = fields.Many2one('task', string = "Related Task", required = 1)
     seq_no = fields.Integer(string = "Sequence No", size = 80)
     relation_type_id = fields.Many2one('relation.type', string = "Relation Type", required = 1)
@@ -254,6 +213,15 @@ class ProjectsetupWorkScope(models.Model):
     effort = fields.Integer('Effort Hours', size = 80)
     remarks = fields.Text('Remarks', size = 250)
 
+    @api.onchange('name')
+    def get_parent_id(self):
+        relation_obj = self.env['task.relationship']
+        if self.name:
+            relation_br = relation_obj.search([('related_task_id', '=', self.name.id)])
+            if relation_br:
+                self.parent_task_id = relation_br[0].primary_task_id.id
+
+
 class mapboq(models.Model):
     _name = "project.mapboq"
     _description = "Project Map BOQ"
@@ -312,6 +280,8 @@ class WorkOrderDetails(models.Model):
     work_scope_ids = fields.One2many('work.scope', 'work_scope', string = "WorkScope")
 
 
+
+
 class WorkScope(models.Model):
     _name = "work.scope"
     _description = "Work Scope Details"
@@ -329,12 +299,20 @@ class WorkScope(models.Model):
     wo_task_type = fields.Selection([('N', 'New'),('E', 'Existing'),('D', 'Defect')], string = "WO Task Type")
     task_desc = fields.Char('Task Description', size = 120)
     wbs_id = fields.Many2one('task.wbs', string = "WBS", required = 1)
-    parent_map_task_id = fields.Many2one('task', domain = [('name','=','group')], string = "Task", required = 1)
+    parent_task_id = fields.Many2one('task', string = "Parent Task", required = 1)
     # parent_task = fields.Char("Parent Task", size =150)
     milestone_id = fields.Many2one('task.milestone', string = "Milestone", required = 1)
     task_class = fields.Selection([('P', 'Planned'),('U', 'Unplanned')], string = "Task Class")
     effort = fields.Integer('Effort Hours', size = 80)
     remarks = fields.Text('Remarks', size = 150)
+
+    @api.onchange('task_id')
+    def get_parent_id(self):
+        relation_obj = self.env['task.relationship']
+        if self.task_id:
+            relation_br = relation_obj.search([('related_task_id', '=', self.task_id.id)])
+            if relation_br:
+                self.parent_task_id = relation_br[0].primary_task_id.id
 
 
 # BOQ
@@ -667,3 +645,4 @@ class IssueTracking(models.Model):
     customer = fields.Char("Customer", size = 80)
     issue_category = fields.Char("Issue Category", size = 80)
     status = fields.Selection([('P','Pending'),('A','Assigned'),('C','Completed')], string = "Status")
+
