@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+         <report
+            string="Project Setup"
+            id="action_project_setup_report"
+            model="project.setup"
+            report_type="qweb-pdf"
+            name="construction.project_setup_report"
+            file="construction.project_setup_report"
+        />        
+
+     </data>
+</openerp>

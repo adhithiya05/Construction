@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="construction.project_setup_template">
+             <t t-call="report.html_container">
+                <t t-set="o" t-value="o.with_context({})" />
+                <div class="page" style="font-family:DejaVu Sans;">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <br/>                                   
+                            <div name="delivery_partner">
+                                <center>
+                                <h2>Project Setup Reports</h2><br/><br/><br/>
+                                <table style="border: none; width: 500px; margin-left:25px;">
+                                    <tr>
+                                        <td><strong>Project: </strong></td>
+                                        <td><span t-field="o.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Status: </strong></td>
+                                        <td><span t-field="o.status"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Actual Start Date: </strong></td>
+                                        <td><span t-field="o.act_start_date"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Actual End Date: </strong></td>
+                                        <td><span t-field="o.act_end_date"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Project Start Date: </strong></td>
+                                        <td><span t-field="o.start_date"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Project End Date: </strong></td>
+                                        <td><span t-field="o.end_date"/></td>
+                                    </tr>
+                                </table>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="construction.project_setup_report">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="construction.project_setup_template"/>
+        </t>
+    </template>
+
+    </data>
+</openerp>
