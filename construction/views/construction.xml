@@ -137,6 +137,7 @@
                  <field name="name"/>
                   <field name="code"/> 
                   <field name="description"/>
+                  <field name="is_parent"/>
               </tree>
           </field>
       </record>
@@ -181,6 +182,32 @@
 
         <!-- Milestone -->
 
+        <!-- Cost Code -->
+        <record id="cost_code_tree_view" model="ir.ui.view">
+          <field name="name">cost.code.tree.view</field>
+          <field name="model">cost.code</field>
+          <field name="arch" type="xml">
+              <tree string="Cost Code" editable="bottom">
+                  <field name="name"/>
+                  <field name="code"/> 
+                  <field name="description"/>
+              </tree>
+          </field>
+        </record>
+
+        <record id="action_cost_code" model="ir.actions.act_window">
+            <field name="name">Cost Code</field>
+            <field name="res_model">cost.code</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can create your cost code.
+                </p>
+            </field>
+        </record>
+
+        <!-- Cost Code -->
+
 
        <!-- Master data -->
 
@@ -194,17 +221,25 @@
             <field name="arch" type="xml">
               
                 <form string="Manage Project Details" delete="false">
+                   <header>		                    
+                        <button name="initiate_work_order" string="Initiate Work Order" type="object"/> 		                      
+                    </header>
                     <sheet>
+                      <div class="oe_button_box" name="button_box" groups="base.group_user">
+                            <button  class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-files-o">
+                                <field string="Documents" name="doc_count" widget="statinfo"/>
+                            </button>
+                        </div>
                         <group>
-                            <group>
-                              <field name="project"/>
-                              <field name="status"/>
+                             <group>
+                              <field name="name"/>
                               <field name="act_start_date"/>
+                              <field name="start_date"/>
                             </group>
                             <group>
-                                <field name="start_date"/>
-                                <field name="end_date"/>
+                                <field name="status"/>
                                 <field name="act_end_date"/> 
+                                <field name="end_date"/>
                             </group>
                         </group>
                         <notebook>
@@ -236,7 +271,7 @@
             <field name="model">project.setup</field>
             <field name="arch" type="xml">
                 <tree string="Project Setup Detail Tree" delete="false" >
-                    <field name="project"/>
+                    <field name="name"/>
                     <field name="status" />
                     <field name="start_date"/>
                     <field name="end_date"/>
@@ -251,10 +286,11 @@
             <field name="model">project.deliveryunit</field>
             <field name="arch" type="xml">
                 <tree string="Delivery Details" editable="bottom">
+                    <field name="s_no"/>
                     <field name="name"/>
                     <field name="description"/>
                     <field name="specification"/>
-                    <field name="customer"/>
+                    <field name="customer_id"/>
                     <field name="remarks"/>
                 </tree>
             </field>
@@ -266,6 +302,7 @@
             <field name="model">project.usermapping</field>
             <field name="arch" type="xml">
                 <tree string="Project User Mapping" editable="bottom">
+                    <field name="s_no"/>
                     <field name="name"/>
                     <field name="emp_code"/>
                     <field name="user_type"/>
@@ -308,9 +345,11 @@
                        <field name="wbs_id"/>
                        <field name="status"/>
                        <field name="actual_startdate"/>
-                       <field name="parent_task_id"/> 
+                       <field name="parent_task_id"/>
+					   <field name="wo_task_type"/>					   
                        </group>
                         <group>
+						<field name="task_class"/>  
                         <field name="task_desc"/>
                         <field name="planed_enddate"/>
                         <field name="milestone_id"/>
@@ -334,10 +373,13 @@
                     <field name="s_no"/>
                     <!-- <field name ="task_class"/> -->
                     <field name="name"/>
+                    <field name="wbs_id"/>
+                    <field name="parent_task_id"/> 
                     <field name="planed_startdate"/>
                     <field name="planed_enddate"/>
                     <field name="actual_startdate"/>
                     <field name="actual_enddate"/>
+                    <field name="effort"/>
                     <field name="status"/>
                 </tree>
             </field>
@@ -363,8 +405,9 @@
             <field name="model">task.relationship</field>
             <field name="arch" type="xml">
                 <tree string="Task Relationship" editable = "bottom">
-                    <field name="primary_task_id"/>
-                    <field name="related_task_id"/>
+                    <field name="parent_fun_ids" invisible="1" widget="many2many_tags"/>
+                    <field name="primary_task_id" domain="[('id', 'in', parent_fun_ids and parent_fun_ids[0][2])]"/>
+                    <field name="related_task_id" domain="[('id', 'not in', parent_fun_ids and parent_fun_ids[0][2])]"/>
                     <field name="seq_no"/>
                     <field name="relation_type_id"/>
                     <field name="schedule_type" />
@@ -683,22 +726,20 @@
                 </tree>
             </field>
         </record>
-
-        <record id="boq_details_tree" model="ir.ui.view">
-            <field name="name">boq.details.tree</field>
-            <field name="model">boq.details</field>
-            <field name="arch" type="xml">
-                <tree string="BOQ Details" editable="bottom">
-                    <field name="name"/>
-                    <field name="description"/>
-                    <field name="uom_id"/>
-                    <field name="quantity"/>
-                    <field name="cost_per_unit"/>
-                    <field name="total_cost" sum="Total Cost"/>
-                </tree>
-            </field>
+        <record id="boq_details_tree" model="ir.ui.view">		
+            <field name="name">boq.details.tree</field>		
+            <field name="model">boq.details</field>		
+            <field name="arch" type="xml">		
+                <tree string="BOQ Details" editable="bottom">		
+                    <field name="name"/>		
+                    <field name="description"/>		
+                    <field name="uom_id"/>		
+                    <field name="quantity"/>		
+                    <field name="cost_per_unit"/>		
+                    <field name="total_cost" sum="Total Cost"/>		
+                </tree>		
+            </field>		
         </record>
-
         <record id="boq_items_form_view" model="ir.ui.view">
             <field name="name">boq.items.form.view</field>
             <field name="model">boq.items</field>
@@ -740,6 +781,21 @@
                 </tree>
             </field>
         </record>
+        <record id="boq_details_tree" model="ir.ui.view">
+            <field name="name">boq.details.tree</field>
+            <field name="model">boq.details</field>
+            <field name="arch" type="xml">
+                <tree string="BOQ Details" editable="bottom">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="uom_id"/>
+                    <field name="quantity"/>
+                    <field name="cost_per_unit"/>
+                    <field name="total_cost" sum="Total Cost"/>
+                </tree>
+            </field>
+        </record>
+
         <record id="act_window_manage_boq_view" model="ir.actions.act_window">
             <field name="name">Manage BOQ</field>
             <field name="res_model">bill.of.quantity</field>
@@ -759,15 +815,84 @@
 
          <!-- Project BOQ -->
 
+        <!--  <record id="project_boq_form_view" model="ir.ui.view">
+            <field name="name">project.boq.form.view</field>
+            <field name="model">project.bill.of.quantity</field>
+            <field name="arch" type="xml">
+              
+                <form string="Manage Project Level BOQ" delete = "true" copy="true">
+                    <header>
+                        <button name="generate_duplicate_form" string="New Revision" type="object"/>
+                        
+                    </header>
+                   
+                    <sheet>
+                        <group>
+                            <group>
+                              <field name="boq_id"/>
+                              <field name="act_start_date"/>
+                              <field name="start_date"/>
+                              <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="revision"/>
+                                <field name="act_end_date"/> 
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                          <page string="Delivery Unit">
+                            <field name="delivery_unit_ids"/>
+                          </page> -->
+                         <!--  <page string="Project User Mapping">
+                            <field name="user_mapping_ids"/>
+                          </page>
+                           <page string="Associate BOQ">
+                            <field name="boq_mapping_ids"/>
+                          </page>
+                          <page string="Work Scope">
+                            <field name="work_scope_ids"/>
+                          </page> -->
+                        <!-- </notebook>
+                    </sheet> -->
+                   <!--  <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                  </div> -->
+               <!--  </form>
+            </field>
+        </record> -->
+
+
+       <!--  <record id="project_boq_tree_view" model="ir.ui.view">
+            <field name="name">project.boq.tree.view</field>
+            <field name="model">project.bill.of.quantity</field>
+            <field name="arch" type="xml">
+                <tree string="Manage Project Level BOQ">
+                    <field name="boq_id"/>
+                    <field name="status" />
+                    <field name="start_date"/>
+                    <field name="end_date"/> -->
+                    <!-- <field name="delivery_unit" string="D List"/> -->
+               <!--  </tree>
+            </field>
+        </record>
+ -->
+
         <record id="project_boq_form_view" model="ir.ui.view">
             <field name="name">project.boq.form.view</field>
             <field name="model">project.bill.of.quantity</field>
             <field name="arch" type="xml">
                 <form string="Manage BOQ" delete="false">
+                    <header>
+                        <button name="generate_duplicate_form" string="New Revision" type="object"/>
+                        
+                    </header>
+                   
                     <sheet>
                         <group>
                             <group>
-                                <field name="name"/>
+                                <field name="project"/>
                                 <field name="boq_id"/>
                                 <field name="boq_type_id" options="{'no_create': True}"/>
                                 <field name="job_id"/>
@@ -808,7 +933,7 @@
             <field name="model">project.bill.of.quantity</field>
             <field name="arch" type="xml">
                 <tree string="Manage BOQ Tree" delete="false" >
-                    <field name="name"/>
+                    <field name="project"/>
                     <field name="revision"/>
                     <field name="boq_id"/>
                     <field name="boq_shr_description" />
@@ -823,9 +948,9 @@
             </field>
         </record>
 
-        <record id="boq_details_tree" model="ir.ui.view">
-            <field name="name">boq.details.tree</field>
-            <field name="model">boq.details</field>
+        <record id="project_boq_details_tree" model="ir.ui.view">
+            <field name="name">project.boq.details.tree</field>
+            <field name="model">project.boq.details</field>
             <field name="arch" type="xml">
                 <tree string="BOQ Details" editable="bottom">
                     <field name="name"/>
@@ -838,9 +963,9 @@
             </field>
         </record>
 
-        <record id="boq_items_form_view" model="ir.ui.view">
-            <field name="name">boq.items.form.view</field>
-            <field name="model">boq.items</field>
+        <record id="project_boq_items_form_view" model="ir.ui.view">
+            <field name="name">project.boq.items.form.view</field>
+            <field name="model">project.boq.items</field>
             <field name="arch" type="xml">
               
                 <form string="BOQ Items" delete="false">
@@ -867,9 +992,9 @@
                 </form>
             </field>
         </record>
-        <record id="boq_items_tree" model="ir.ui.view">
-            <field name="name">boq.items.tree</field>
-            <field name="model">boq.items</field>
+        <record id="project_boq_items_tree" model="ir.ui.view">
+            <field name="name">project.boq.items.tree</field>
+            <field name="model">project.boq.items</field>
             <field name="arch" type="xml">
                 <tree string="BOQ Items">
                     <field name="seq_no"/>
@@ -883,16 +1008,16 @@
             </field>
         </record>
         <record id="act_window_project_manage_boq_view" model="ir.actions.act_window">
-            <field name="name">Manage BOQ</field>
+            <field name="name">Project Level BOQ</field>
             <field name="res_model">project.bill.of.quantity</field>
             <field name="view_mode">tree,form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                    Here, you can manage BOQ.
+                    Here, you can manage Project Level BOQ.
                 </p>
             </field>
         </record>
-
+ 
 
 
 
@@ -1293,6 +1418,167 @@
     <!-- CRM Issue Tracking -->
 
 
+    <!-- Material  Consumption -->
+        <record id="material_consumption_form_view" model="ir.ui.view">
+            <field name="name">material.consumption.form.view</field>
+            <field name="model">material.consumption</field>
+            <field name="arch" type="xml">
+                <form string="Material Consumption">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="recording_date" />
+                                <field name="project_id"/>
+                                <field name="work_order_id"/>
+                                <field name="task_id"/>
+                            </group>
+                            <group>
+                               <field name="uom_id"/>
+                               <field name="unit_cost"/>
+                               <field name="total_cost"/>
+                               <field name="cost_code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="material_consumption_tree_view" model="ir.ui.view">
+            <field name="name">material.consumption.tree.view</field>
+            <field name="model">material.consumption</field>
+            <field name="arch" type="xml">
+                <tree string="Material Consumption">
+                    <field name="name"/>
+                    <field name="recording_date" />
+                    <field name="project_id"/>
+                    <field name="uom_id"/>
+                    <field name="unit_cost"/>
+                    <field name="total_cost"/>
+                    <field name="cost_code"/>
+                </tree>
+            </field>
+        </record>
+
+
+      
+        <record id="act_window_material_consumption_view" model="ir.actions.act_window">
+            <field name="name">Material Consumption</field>
+            <field name="res_model">material.consumption</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can Material Consumption.
+                </p>
+            </field>
+        </record>
+
+    <!-- Material Consumption -->
+
+
+
+    <!-- Budget -->
+
+        <record id="budget_view" model="ir.ui.view">
+            <field name="name">budget.view</field>
+            <field name="model">budget</field>
+            <field name="arch" type="xml">
+                <form string="Budget">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="project_id"/>
+                                <field name="budget_amount"/>
+                                <field name="positive_tolerance"/>
+                                <field name="remarks"/>
+                            </group>
+                            <group>
+                                <field name="cost_code" />
+                                <field name="consumed_amount"/>
+                                <field name="negative_tolerance"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="budget_tree_view" model="ir.ui.view">
+            <field name="name">budget.tree.view</field>
+            <field name="model">budget</field>
+            <field name="arch" type="xml">
+                <tree string="Budget">
+                    <field name="project_id"/>
+                    <field name="budget_amount" />
+                    <field name="cost_code"/>
+                    <field name="positive_tolerance"/>
+                    <field name="negative_tolerance"/>
+                    <field name="remarks"/>
+                </tree>
+            </field>
+        </record>
+
+
+      
+        <record id="act_window_budget_view" model="ir.actions.act_window">
+            <field name="name">Budget</field>
+            <field name="res_model">budget</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Here, you can Budget.
+                </p>
+            </field>
+        </record>
+
+    <!-- Budget -->
+    <!-- Gantt chart -->
+
+        <menuitem id="menu_manage_project_setup" name="Project Setup"
+        parent="menu_Project_setup" sequence="10" action="act_window_manage_proect_view"/>
+
+        <record id="project_setup_work_search_form" model="ir.ui.view">
+            <field name="name">project.setup.work.scope.search.form</field>
+            <field name="model">project.setup.work.scope</field>
+            <field name="arch" type="xml">
+               <search string="Project Work Scope">
+                    <field name="name" string="Tasks"/>
+                    <field name="parent_task_id"/>
+                    <field name="project_setup_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Project" name="project" context="{'group_by':'project_setup_id'}"/>
+                        <filter string="Task" context="{'group_by':'name'}"/>
+                        <filter string="Parent Task" name="parent_task" context="{'group_by':'parent_task_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_project_setup_work_scope_gantt" model="ir.ui.view">
+            <field name="name">project.setup.work.scope.gantt</field>
+            <field name="model">project.setup.work.scope</field>
+            <field name="arch" type="xml">
+                <gantt date_start="planed_startdate" date_stop="planed_enddate" progress="progress" string="Project Gantt">
+                </gantt>
+            </field>
+        </record>
+
+        <record id="act_window_project_setup_scope_view" model="ir.actions.act_window">
+            <field name="name">Project Gantt</field>
+            <field name="res_model">project.setup.work.scope</field>
+            <field name="view_type">form</field>
+            <field name="domain">[]</field>
+            <field name="context">{
+                'search_default_project': 1,      <!--search_default is default name and project is filter name -->
+                'search_default_parent_task': 1,  <!--parent_task is filter name in search -->
+            }</field>
+            <field name="search_view_id" ref="project_setup_work_search_form"/>
+            <field name="view_mode">gantt,tree,form</field>
+        </record>
+    <!-- Gantt chart -->
+
+
        <!--Master Data -->
 
         <menuitem name="Project"
@@ -1337,14 +1623,18 @@
         <menuitem id="menu_wbs" name="WBS"
           parent="menu_master_data" sequence="8" action="action_task_wbs"/>
 
-        
+        <menuitem id="menu_cost_code" name="Cost Code"
+          parent="menu_master_data" sequence="9" action="action_cost_code"/>
+
 
       <!--Master Data -->
 
       <!-- Project Setup -->
 
-        <menuitem id="menu_manage_project_setup" name="Project Setup"
-        parent="menu_Project_setup" sequence="10" action="act_window_manage_proect_view"/>
+        
+
+        <menuitem id="menu_project_setup_work_scope" name="Project Gantt"
+        parent="menu_Project_setup" sequence="11" action="act_window_project_setup_scope_view"/>
 
         <menuitem id="menu_manage_task_realationship" name="Task Relationship"
         parent="menu_Project_setup" sequence="11" action="act_window_relationship_view"/>
@@ -1358,8 +1648,16 @@
         <menuitem id="menu_project_boq_template" name="Project Level BOQ"
         parent="menu_Project_setup" sequence="14" action="act_window_project_manage_boq_view"/>
 
+        <menuitem id="menu_material_template" name="Material Consumption"
+        parent="menu_Project_setup" sequence="15" action="act_window_material_consumption_view"/>
+
+        <menuitem id="menu_budget_template" name="Budget"
+        parent="menu_Project_setup" sequence="16" action="act_window_budget_view"/>
+
+
+
         
-      <!-- Project Setup -->
+      <!-- Project Setup  -->
 
 
        <!-- Project Plan -->
